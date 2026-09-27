@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" width="1400" height="1000" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .blk{fill:#ffffff;stroke:#1f2937;stroke-width:2}
+      .opt{fill:#fafafa;stroke:#6b7280;stroke-width:2;stroke-dasharray:8 5}
+      .t{font-size:14px;fill:#111827}
+      .ts{font-size:12px;fill:#374151}
+      .tt{font-size:11px;fill:#6b7280}
+      .h{font-size:16px;font-weight:700;fill:#111827}
+      .v33{stroke:#dc2626;stroke-width:2.5;fill:none}
+      .v5{stroke:#ea580c;stroke-width:2.5;fill:none}
+      .gnd{stroke:#111827;stroke-width:2.5;fill:none}
+      .sda{stroke:#2563eb;stroke-width:2.5;fill:none}
+      .scl{stroke:#16a34a;stroke-width:2.5;fill:none}
+      .sig{stroke:#7c3aed;stroke-width:2.5;fill:none}
+      .res{fill:#fff;stroke:#111827;stroke-width:2}
+      .dot{stroke:none}
+      .tube{stroke:#0891b2;stroke-width:5;fill:none;stroke-linecap:round}
+    </style>
+  </defs>
+
+  <rect width="1400" height="1000" fill="#ffffff"/>
+  <text x="40" y="38" style="font-size:22px;font-weight:700" fill="#111827">FilterSense — Prototype Circuit v0.1</text>
+  <text x="40" y="60" class="ts">Waveshare ESP32-C6-LCD-1.47 · single I²C bus · USB-C powered · dashed = Pro tier / optional</text>
+
+  <!-- ===== RAILS ===== -->
+  <line x1="380" y1="95" x2="1320" y2="95" class="v5"/>
+  <text x="1326" y="99" class="ts" fill="#ea580c">+5V</text>
+  <line x1="380" y1="130" x2="1320" y2="130" class="v33"/>
+  <text x="1326" y="134" class="ts" fill="#dc2626">+3V3</text>
+  <line x1="380" y1="720" x2="1320" y2="720" class="gnd"/>
+  <text x="1326" y="724" class="ts">GND</text>
+
+  <!-- ===== ESP32 BOARD ===== -->
+  <rect x="60" y="170" width="320" height="500" rx="8" class="blk"/>
+  <text x="78" y="198" class="h">ESP32-C6-LCD-1.47</text>
+  <text x="78" y="216" class="tt">Waveshare · ESP32-C6FH4 · 4 MB flash</text>
+  <!-- onboard features -->
+  <rect x="78" y="232" width="150" height="120" rx="4" fill="#eef2ff" stroke="#6366f1"/>
+  <text x="90" y="254" class="ts">1.47" ST7789 LCD</text>
+  <text x="90" y="272" class="tt">SPI: GPIO6/7/14/15/21</text>
+  <text x="90" y="288" class="tt">BL: GPIO22</text>
+  <text x="90" y="310" class="ts">TF card</text>
+  <text x="90" y="326" class="tt">GPIO4/5/6/7 (shared SPI)</text>
+  <text x="90" y="344" class="tt">⚠ reserved – don't reuse</text>
+  <rect x="78" y="366" width="150" height="70" rx="4" fill="#f0fdf4" stroke="#22c55e"/>
+  <text x="90" y="388" class="ts">RGB LED — GPIO8</text>
+  <text x="90" y="406" class="ts">BOOT btn — GPIO9</text>
+  <text x="90" y="424" class="ts">RESET btn</text>
+  <rect x="78" y="450" width="150" height="46" rx="4" fill="#fff7ed" stroke="#f97316"/>
+  <text x="90" y="470" class="ts">USB-C (5 V in)</text>
+  <text x="90" y="486" class="tt">LDO → 3V3, 800 mA max</text>
+
+  <!-- pins on right edge -->
+  <g class="t">
+    <text x="300" y="134" text-anchor="end"></text>
+  </g>
+  <!-- 5V pin -->
+  <line x1="380" y1="200" x2="400" y2="200" class="v5"/><circle cx="380" cy="200" r="4" fill="#ea580c"/>
+  <text x="370" y="204" class="t" text-anchor="end">5V</text>
+  <line x1="400" y1="200" x2="400" y2="95" class="v5"/>
+  <!-- 3V3 pin -->
+  <line x1="380" y1="240" x2="420" y2="240" class="v33"/><circle cx="380" cy="240" r="4" fill="#dc2626"/>
+  <text x="370" y="244" class="t" text-anchor="end">3V3</text>
+  <line x1="420" y1="240" x2="420" y2="130" class="v33"/>
+  <!-- SDA pin -->
+  <circle cx="380" cy="340" r="4" fill="#2563eb"/>
+  <text x="370" y="344" class="t" text-anchor="end">GPIO18 · SDA</text>
+  <!-- SCL pin -->
+  <circle cx="380" cy="390" r="4" fill="#16a34a"/>
+  <text x="370" y="394" class="t" text-anchor="end">GPIO19 · SCL</text>
+  <!-- GPIO2 -->
+  <circle cx="380" cy="530" r="4" fill="#7c3aed"/>
+  <text x="370" y="534" class="t" text-anchor="end">GPIO2 · BUZZ</text>
+  <!-- GPIO3 -->
+  <circle cx="380" cy="600" r="4" fill="#7c3aed"/>
+  <text x="370" y="604" class="t" text-anchor="end">GPIO3 · BTN</text>
+  <!-- GND -->
+  <circle cx="380" cy="650" r="4" fill="#111827"/>
+  <text x="370" y="654" class="t" text-anchor="end">GND</text>
+  <line x1="380" y1="650" x2="400" y2="650" class="gnd"/>
+  <line x1="400" y1="650" x2="400" y2="720" class="gnd"/>
+
+  <!-- ===== I2C BUS ===== -->
+  <line x1="380" y1="340" x2="1250" y2="340" class="sda"/>
+  <line x1="380" y1="390" x2="1250" y2="390" class="scl"/>
+  <text x="1256" y="344" class="ts" fill="#2563eb">SDA</text>
+  <text x="1256" y="394" class="ts" fill="#16a34a">SCL</text>
+
+  <!-- pull-ups -->
+  <line x1="480" y1="130" x2="480" y2="200" class="v33"/>
+  <rect x="472" y="200" width="16" height="48" class="res"/>
+  <line x1="480" y1="248" x2="480" y2="340" class="sda"/>
+  <circle cx="480" cy="340" r="5" fill="#2563eb"/>
+  <circle cx="480" cy="130" r="5" fill="#dc2626"/>
+  <line x1="530" y1="130" x2="530" y2="200" class="v33"/>
+  <rect x="522" y="200" width="16" height="48" class="res"/>
+  <line x1="530" y1="248" x2="530" y2="390" class="scl"/>
+  <circle cx="530" cy="390" r="5" fill="#16a34a"/>
+  <circle cx="530" cy="130" r="5" fill="#dc2626"/>
+  <text x="468" y="228" class="ts" text-anchor="end">R1 4.7k</text>
+  <text x="540" y="228" class="ts">R2 4.7k</text>
+  
+  
+
+  <!-- ===== SDP810 ===== -->
+  <rect x="610" y="450" width="190" height="170" rx="6" class="blk"/>
+  <text x="625" y="500" class="h">U1  SDP810-500Pa</text>
+  <text x="625" y="520" class="ts">Differential pressure</text>
+  <text x="625" y="537" class="ts">I²C 0x25 · ±500 Pa</text>
+  <text x="625" y="554" class="tt">3.0–5.5 V · ~3 mA</text>
+  <!-- ports -->
+  <rect x="640" y="620" width="18" height="26" fill="#cffafe" stroke="#0891b2" stroke-width="2"/>
+  <rect x="750" y="620" width="18" height="26" fill="#cffafe" stroke="#0891b2" stroke-width="2"/>
+  <text x="630" y="662" class="ts" fill="#0891b2">P+ upstream</text>
+  <text x="728" y="662" class="ts" fill="#0891b2">P− down</text>
+  <!-- pins -->
+  <text x="632" y="468" class="tt">VDD</text><text x="682" y="468" class="tt">SDA</text><text x="732" y="468" class="tt">SCL</text>
+  <line x1="640" y1="130" x2="640" y2="450" class="v33"/><circle cx="640" cy="130" r="5" fill="#dc2626"/>
+  <line x1="690" y1="340" x2="690" y2="450" class="sda"/><circle cx="690" cy="340" r="5" fill="#2563eb"/>
+  <line x1="740" y1="390" x2="740" y2="450" class="scl"/><circle cx="740" cy="390" r="5" fill="#16a34a"/>
+  <line x1="790" y1="620" x2="790" y2="720" class="gnd"/><circle cx="790" cy="720" r="5" fill="#111827"/>
+  <text x="772" y="614" class="tt">GND</text>
+  <!-- decoupling C1 -->
+  <line x1="600" y1="130" x2="600" y2="680" class="v33" stroke-dasharray="0"/>
+  <circle cx="600" cy="130" r="5" fill="#dc2626"/>
+  <line x1="586" y1="680" x2="614" y2="680" stroke="#111827" stroke-width="3"/>
+  <line x1="586" y1="690" x2="614" y2="690" stroke="#111827" stroke-width="3"/>
+  <line x1="600" y1="690" x2="600" y2="720" class="gnd"/><circle cx="600" cy="720" r="5" fill="#111827"/>
+  <text x="548" y="676" class="tt">C1</text><text x="540" y="706" class="tt">100 nF</text>
+
+  <!-- ===== SHT40 ===== -->
+  <rect x="860" y="450" width="170" height="170" rx="6" class="blk"/>
+  <text x="875" y="500" class="h">U2  SHT40</text>
+  <text x="875" y="520" class="ts">Temp + RH</text>
+  <text x="875" y="537" class="ts">I²C 0x44</text>
+  <text x="875" y="554" class="tt">breakout, 3.3 V</text>
+  <text x="882" y="468" class="tt">VIN</text><text x="932" y="468" class="tt">SDA</text><text x="982" y="468" class="tt">SCL</text>
+  <line x1="890" y1="130" x2="890" y2="450" class="v33"/><circle cx="890" cy="130" r="5" fill="#dc2626"/>
+  <line x1="940" y1="340" x2="940" y2="450" class="sda"/><circle cx="940" cy="340" r="5" fill="#2563eb"/>
+  <line x1="990" y1="390" x2="990" y2="450" class="scl"/><circle cx="990" cy="390" r="5" fill="#16a34a"/>
+  <line x1="945" y1="620" x2="945" y2="720" class="gnd"/><circle cx="945" cy="720" r="5" fill="#111827"/>
+  <text x="952" y="640" class="tt">GND</text>
+
+  <!-- ===== SPS30 (optional) ===== -->
+  <rect x="1080" y="450" width="200" height="170" rx="6" class="opt"/>
+  <text x="1095" y="500" class="h" fill="#4b5563">U3  SPS30 (Pro)</text>
+  <text x="1095" y="520" class="ts">PM2.5 downstream</text>
+  <text x="1095" y="537" class="ts">I²C 0x69 · 5 V supply</text>
+  <text x="1095" y="554" class="tt">3.3 V-tolerant logic</text>
+  <text x="1102" y="468" class="tt">VDD</text><text x="1152" y="468" class="tt">SDA</text><text x="1202" y="468" class="tt">SCL</text>
+  <line x1="1110" y1="95" x2="1110" y2="450" class="v5" stroke-dasharray="8 5"/><circle cx="1110" cy="95" r="5" fill="#ea580c"/>
+  <line x1="1160" y1="340" x2="1160" y2="450" class="sda" stroke-dasharray="8 5"/><circle cx="1160" cy="340" r="5" fill="#2563eb"/>
+  <line x1="1210" y1="390" x2="1210" y2="450" class="scl" stroke-dasharray="8 5"/><circle cx="1210" cy="390" r="5" fill="#16a34a"/>
+  <line x1="1130" y1="620" x2="1130" y2="720" class="gnd" stroke-dasharray="8 5"/><circle cx="1130" cy="720" r="5" fill="#111827"/>
+  <line x1="1230" y1="620" x2="1230" y2="720" class="gnd" stroke-dasharray="8 5"/><circle cx="1230" cy="720" r="5" fill="#111827"/>
+  <text x="1138" y="640" class="tt">GND</text><text x="1238" y="640" class="tt">SEL→GND</text>
+  <text x="1238" y="653" class="tt">(selects I²C)</text>
+
+  <!-- ===== BUZZER ===== -->
+  <line x1="380" y1="530" x2="430" y2="530" class="sig"/>
+  <rect x="430" y="522" width="44" height="16" class="res"/>
+  <text x="430" y="514" class="tt">R3 100Ω</text>
+  <line x1="474" y1="530" x2="500" y2="530" class="sig"/>
+  <circle cx="518" cy="530" r="18" fill="#fef3c7" stroke="#111827" stroke-width="2"/>
+  <text x="518" y="535" class="ts" text-anchor="middle">BZ1</text>
+  <text x="540" y="570" class="tt">piezo</text>
+  <line x1="518" y1="548" x2="518" y2="720" class="gnd"/><circle cx="518" cy="720" r="5" fill="#111827"/>
+
+  <!-- ===== BUTTON ===== -->
+  <line x1="380" y1="600" x2="440" y2="600" class="sig"/>
+  <circle cx="440" cy="600" r="4" fill="#fff" stroke="#111827" stroke-width="2"/>
+  <line x1="444" y1="598" x2="474" y2="584" stroke="#111827" stroke-width="2.5"/>
+  <circle cx="478" cy="600" r="4" fill="#fff" stroke="#111827" stroke-width="2"/>
+  <line x1="459" y1="580" x2="459" y2="572" stroke="#111827" stroke-width="2"/>
+  <line x1="450" y1="572" x2="468" y2="572" stroke="#111827" stroke-width="2"/>
+  <text x="408" y="628" class="tt">SW1 filter</text>
+  <text x="408" y="641" class="tt">replaced (3 s)</text>
+  <line x1="482" y1="600" x2="500" y2="600" class="gnd"/>
+  <line x1="500" y1="600" x2="500" y2="720" class="gnd"/><circle cx="500" cy="720" r="5" fill="#111827"/>
+
+  <!-- ===== PNEUMATIC INSET ===== -->
+  <rect x="40" y="760" width="640" height="210" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="56" y="784" class="h">Pneumatic connection (U1)</text>
+  <!-- duct -->
+  <rect x="80" y="810" width="420" height="80" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+  <rect x="280" y="810" width="24" height="80" fill="#a3a3a3" stroke="#404040"/>
+  <line x1="275" y1="810" x2="275" y2="890" stroke="#525252" stroke-dasharray="3 3"/>
+  <line x1="309" y1="810" x2="309" y2="890" stroke="#525252" stroke-dasharray="3 3"/>
+  <text x="292" y="905" class="tt" text-anchor="middle">FILTER</text>
+  <line x1="100" y1="850" x2="480" y2="850" stroke="#9ca3af" stroke-width="2" marker-end="url(#a)"/>
+  <polygon points="480,844 494,850 480,856" fill="#9ca3af"/>
+  <text x="110" y="842" class="tt">AIRFLOW →</text>
+  <text x="140" y="880" class="tt">upstream (dirty)</text>
+  <text x="360" y="880" class="tt">downstream (clean)</text>
+  <!-- taps -->
+  <circle cx="220" cy="810" r="5" fill="#0891b2"/>
+  <circle cx="370" cy="810" r="5" fill="#0891b2"/>
+  <path d="M220 810 V795 Q220 790 225 790 H540" class="tube"/>
+  <path d="M370 810 V800 Q370 796 375 796 H540" class="tube" stroke="#155e75"/>
+  <rect x="540" y="778" width="110" height="34" rx="4" fill="#fff" stroke="#111827" stroke-width="2"/>
+  <text x="595" y="800" class="ts" text-anchor="middle">SDP810</text>
+  <text x="520" y="836" class="tt">P+ ← upstream tap</text>
+  <text x="520" y="850" class="tt">P− ← downstream tap</text>
+  <text x="56" y="928" class="tt">• Taps flush with duct wall, perpendicular to airflow, 5–15 cm from filter face</text>
+  <text x="56" y="944" class="tt">• Equal-length silicone tube (~4 mm ID, ≤2 m) with drip loop · electronics outside duct</text>
+  <text x="56" y="960" class="tt">• Swapped tubes read negative ΔP — firmware flags "install fault"</text>
+
+  <!-- ===== LEGEND / NOTES ===== -->
+  <rect x="700" y="760" width="660" height="210" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="716" y="784" class="h">Legend &amp; notes</text>
+  <line x1="716" y1="806" x2="756" y2="806" class="v33"/><text x="764" y="810" class="ts">+3V3</text>
+  <line x1="820" y1="806" x2="860" y2="806" class="v5"/><text x="868" y="810" class="ts">+5V (USB)</text>
+  <line x1="950" y1="806" x2="990" y2="806" class="gnd"/><text x="998" y="810" class="ts">GND</text>
+  <line x1="1050" y1="806" x2="1090" y2="806" class="sda"/><text x="1098" y="810" class="ts">SDA</text>
+  <line x1="1150" y1="806" x2="1190" y2="806" class="scl"/><text x="1198" y="810" class="ts">SCL</text>
+  <line x1="716" y1="830" x2="756" y2="830" class="sig"/><text x="764" y="834" class="ts">GPIO signal</text>
+  <circle cx="870" cy="830" r="5" fill="#111827"/><text x="882" y="834" class="ts">junction (crossings without a dot are not connected)</text>
+  <text x="716" y="862" class="ts">I²C: 0x25 SDP810 · 0x44 SHT40 · 0x69 SPS30 · 100 kHz · omit R1/R2 if breakouts have pull-ups</text>
+  <text x="716" y="882" class="ts">Budget alt for U1: 2× BMP390 (0x76 + 0x77) either side of filter, subtract.</text>
+  <text x="716" y="902" class="ts">GPIO18/19/2/3 are suggestions — confirm against board header silkscreen.</text>
+  <text x="716" y="922" class="ts">Avoid GPIO4–7, 14, 15, 21, 22 (LCD/TF), 12/13 (USB), 8 (RGB), 9 (BOOT).</text>
+  <text x="716" y="942" class="ts">Total draw ≈ 80 mA typ (Wi-Fi peaks ~300 mA); +60 mA with SPS30.</text>
+  <text x="716" y="962" class="tt">FilterSense · Vincent Ooi / Avi Inger · v0.1 · 2026-09-26</text>
+</svg>

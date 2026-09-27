@@ -1,0 +1,13 @@
+Ref,Part,Qty,Tier,Interface,Notes,Approx USD
+MCU,Waveshare ESP32-C6-LCD-1.47,1,Core,-,Onboard LCD + RGB LED + TF slot; already on hand,15
+U1,Sensirion SDP810-500Pa,1,Core,I2C 0x25,Differential pressure across filter; SDP810-125Pa for low-resistance fiberglass filters,40
+U2,Sensirion SHT40 breakout,1,Core,I2C 0x44,Temp + RH,6
+R1 R2,Resistor 4.7k 1/4W,2,Core,-,I2C pull-ups; omit if breakouts already have them,0.10
+C1,Capacitor 100nF ceramic,1,Core,-,Decoupling at U1 VDD,0.10
+R3,Resistor 100R,1,Core,-,Buzzer series resistor,0.05
+BZ1,Passive piezo buzzer,1,Core,GPIO2 PWM,Audible alert,0.80
+SW1,Tactile push button,1,Core,GPIO3,Filter replaced / re-learn baseline,0.20
+TUBE,Silicone tube 4mm ID,2 m,Core,-,Equal lengths upstream/downstream,4
+TAP,Rubber grommet 1/4in + static pressure tip,2,Core,-,Duct wall taps,4
+U3,Sensirion SPS30,1,Pro,I2C 0x69,PM2.5 downstream; 5V supply; SEL->GND,45
+ALT,Bosch BMP390 breakout,2,Budget alt,I2C 0x76/0x77,Replace U1 with pair; needs re-zeroing,20
